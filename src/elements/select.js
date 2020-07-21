@@ -1,6 +1,7 @@
 import React from "react";
+import { tw } from "tailwindcss-classnames";
 
-const classes = [
+const classes = tw(
   "appearance-none",
   "w-full",
   "bg-gray-100",
@@ -15,14 +16,14 @@ const classes = [
   "focus:outline-none",
   "focus:bg-white",
   "focus:border-gray-500"
-];
+);
 
-export const Select = props => (
-  <div className={`relative inline-block ${props.className}`}>
-    <select {...props} className={classes.join(" ")} />
-    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+export const Select = (props) => (
+  <div className={`${tw("relative", "inline-block")} ${props.className}`}>
+    <select {...props} className={classes} />
+    <div className="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
       <svg
-        className="fill-current h-4 w-4"
+        className="w-4 h-4 fill-current"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
       >

@@ -1,7 +1,14 @@
 import React from "react";
+import { tw } from "tailwindcss-classnames";
 
-const classes = ["rounded", "overflow-hidden", "shadow-lg", "bg-white", "p-3"];
+const classes = tw(
+  "rounded",
+  "overflow-hidden",
+  "shadow-lg",
+  "bg-white",
+  "p-3"
+);
 
-export const Card = props => (
-  <div {...props} className={[...classes, props.className].join(" ")} />
+export const Card = (props) => (
+  <div {...props} className={[classes, props.className].join(" ")} />
 );

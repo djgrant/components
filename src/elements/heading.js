@@ -1,10 +1,11 @@
 import React from "react";
+import { tw } from "tailwindcss-classnames";
 
 const getClassNames = (level) =>
   ({
-    h1: "text-2xl font-bold",
-    h2: "text-xl text-gray-700",
-    h3: "text-lg font-bold ",
+    h1: tw("text-2xl", "font-bold"),
+    h2: tw("text-xl", "text-gray-700"),
+    h3: tw("text-lg", "font-bold"),
   }[level]);
 
 export const Heading = ({ children, as, ...levels }) => {

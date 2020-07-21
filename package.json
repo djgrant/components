@@ -9,7 +9,8 @@
     "react": "16.12.0",
     "react-dom": "16.12.0",
     "react-scripts": "3.0.1",
-    "tailwindcss": "^1.5.1"
+    "tailwindcss": "^1.5.1",
+    "tailwindcss-classnames": "^1.4.1"
   },
   "scripts": {
     "build:tailwind": "tailwindcss build src/tailwind.css -o src/tailwind.output.css",

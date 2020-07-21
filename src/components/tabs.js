@@ -1,5 +1,5 @@
 import React from "react";
-import { TabMatch } from "../containers/tabs";
+import { TabMatch } from "./tab-match";
 import { Link } from "@reach/router";
 import { tw } from "tailwindcss-classnames";
 

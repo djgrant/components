@@ -10,7 +10,7 @@ import {
   Tab,
   TabPage,
   TabPanel,
-} from "./elements";
+} from "./components";
 
 export const Examples = () => (
   <>

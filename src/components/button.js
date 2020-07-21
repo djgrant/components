@@ -1,7 +1,7 @@
 import React from "react";
 import { tw } from "tailwindcss-classnames";
 
-const baseClasses = tw("font-semibold", "rounded");
+const baseClasses = tw("text-sm", "font-semibold", "rounded");
 const blankClasses = tw("font-semibold", "text-gray-800");
 const primaryClasses = tw("bg-blue-500", "hover:bg-blue-700", "text-white");
 const secondaryClasses = tw(

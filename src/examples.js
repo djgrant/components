@@ -22,10 +22,7 @@ export const Examples = () => (
 
     <div className="flex">
       <div className="w-48 p-6 space-y-4">
-        <Heading h5 className="text-gray-500 uppercase">
-          Components
-        </Heading>
-
+        <Heading h6>Components</Heading>
         <Tabs direction="vertical">
           <Tab to="buttons" default>
             Buttons
@@ -81,10 +78,12 @@ export const Examples = () => (
         </TabPage>
 
         <TabPage match="headings">
-          <h2>Text</h2>
           <Heading h1>Heading 1</Heading>
           <Heading h2>Heading 2</Heading>
           <Heading h3>Heading 3</Heading>
+          <Heading h4>Heading 4</Heading>
+          <Heading h5>Heading 5</Heading>
+          <Heading h6>Heading 6</Heading>
         </TabPage>
       </Prose>
     </div>

@@ -95,7 +95,7 @@ export const Examples = () => (
             </TabPanel>
             <TabPanel match="tabs/second">
               <div>Second</div>
-              <Link to="/examples">Back to examples</Link>
+              <Link to="/">Back home</Link>
             </TabPanel>
             <TabPanel match="tabs/third">Third</TabPanel>
           </div>

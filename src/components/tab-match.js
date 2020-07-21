@@ -63,7 +63,7 @@ const stripLeadingSlash = (str) => str.replace(/^\/+/, "");
 const getNavigateUrl = (location, parentPath, match) => {
   const parentPathSegment = parentPath.replace("./", "");
   const pathRelativeToParent = match
-    .replace(`${parentPathSegment}/`, "")
+    .replace(`${parentPathSegment}${parentPathSegment && "/"}`, "")
     .replace("/*", "");
 
   return [location.pathname, pathRelativeToParent]

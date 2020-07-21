@@ -1,4 +1,5 @@
 import React from "react";
+import { importMDX } from "mdx.macro";
 import {
   Button,
   Card,
@@ -14,6 +15,8 @@ import {
   TabPanel,
 } from "./components";
 
+const Readme = importMDX.sync("../README.md");
+
 export const Examples = () => (
   <>
     <header className="p-6 border-b border-gray-200">
@@ -24,13 +27,16 @@ export const Examples = () => (
 
     <div className="flex">
       <div className="w-48 py-6 space-y-4">
+        <Tabs direction="vertical">
+          <Tab to="readme" default>
+            Readme
+          </Tab>
+        </Tabs>
         <Heading h6 className="px-6">
           Components
         </Heading>
         <Tabs direction="vertical">
-          <Tab to="buttons" default>
-            Buttons
-          </Tab>
+          <Tab to="buttons">Buttons</Tab>
           <Tab to="cards">Cards</Tab>
           <Tab to="forms">Forms</Tab>
           <Tab to="tabs">Tabs</Tab>
@@ -39,8 +45,11 @@ export const Examples = () => (
       </div>
 
       <Prose className="p-6">
-        <TabPage match="/buttons" default>
-          <h2>Buttons</h2>
+        <TabPage match="readme" default>
+          <Readme />
+        </TabPage>
+        <TabPage match="buttons">
+          <h1>Buttons</h1>
           <div className="flex space-x-2">
             <Button>Click me</Button>
             <Button type="primary">Click me</Button>
@@ -49,12 +58,12 @@ export const Examples = () => (
         </TabPage>
 
         <TabPage match="cards">
-          <h2>Cards</h2>
+          <h1>Cards</h1>
           <Card>Hello card</Card>
         </TabPage>
 
         <TabPage match="forms">
-          <h2>Forms</h2>
+          <h1>Forms</h1>
           <h4>Input</h4>
           <Input type="password" />
 
@@ -71,7 +80,7 @@ export const Examples = () => (
         </TabPage>
 
         <TabPage match="./tabs/*">
-          <h2>Tabs</h2>
+          <h1>Tabs</h1>
           <Tabs>
             <Tab to="tabs/first" defaultOf="./tabs">
               Hello
@@ -93,6 +102,7 @@ export const Examples = () => (
         </TabPage>
 
         <TabPage match="headings">
+          <h1>Headings</h1>
           <Heading h1>Heading 1</Heading>
           <Heading h2>Heading 2</Heading>
           <Heading h3>Heading 3</Heading>

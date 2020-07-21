@@ -17,17 +17,21 @@ const getTabClasses = (active, direction) =>
     "hover:text-blue-500",
     "border-blue-500",
     "no-underline",
-    "py-4",
-    "px-6",
     {
       "text-blue-500": !active,
       "border-b-4": !active && direction === "horizontal",
       "border-l-4": !active && direction === "vertical",
-    }
+    },
+    direction === "vertical" && ["py-3", "pl-4"],
+    direction === "horizontal" && ["py-4", "px-6"]
   );
 
 export const Tabs = ({ children, direction = "horizontal", className }) => (
-  <nav className={tw(getTabsClasses(direction), className)}>{children}</nav>
+  <nav className={tw(getTabsClasses(direction), className)}>
+    {React.Children.map(children, (el) =>
+      React.cloneElement(el, { direction })
+    )}
+  </nav>
 );
 
 export const Tab = ({ children, to, direction, ...props }) => (

@@ -14,16 +14,23 @@ import {
 } from "./elements";
 
 export const Examples = () => (
-  <div className="p-4 bg-gray-200">
-    <Tabs>
-      <Tab to="buttons" default>
-        Buttons
-      </Tab>
-      <Tab to="cards">Cards</Tab>
-      <Tab to="forms">Forms</Tab>
-      <Tab to="tabs">Tabs</Tab>
-      <Tab to="headings">Headings</Tab>
-    </Tabs>
+  <div className="flex p-4 bg-gray-200">
+    <div className="w-48 space-y-4">
+      <div className="text-xs font-bold text-gray-600 uppercase">
+        Components
+      </div>
+
+      <Tabs direction="vertical">
+        <Tab to="buttons" default>
+          Buttons
+        </Tab>
+        <Tab to="cards">Cards</Tab>
+        <Tab to="forms">Forms</Tab>
+        <Tab to="tabs">Tabs</Tab>
+        <Tab to="headings">Headings</Tab>
+      </Tabs>
+    </div>
+
     <Prose>
       <TabPage match="/buttons" default>
         <h2>Buttons</h2>

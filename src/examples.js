@@ -3,8 +3,10 @@ import {
   Button,
   Card,
   Heading,
-  Prose,
+  Input,
   Link,
+  Prose,
+  Search,
   Select,
   Tabs,
   Tab,
@@ -21,8 +23,10 @@ export const Examples = () => (
     </header>
 
     <div className="flex">
-      <div className="w-48 p-6 space-y-4">
-        <Heading h6>Components</Heading>
+      <div className="w-48 py-6 space-y-4">
+        <Heading h6 className="px-6">
+          Components
+        </Heading>
         <Tabs direction="vertical">
           <Tab to="buttons" default>
             Buttons
@@ -51,11 +55,19 @@ export const Examples = () => (
 
         <TabPage match="forms">
           <h2>Forms</h2>
-          <h3>Select</h3>
+          <h4>Input</h4>
+          <Input type="password" />
+
+          <h4>Select</h4>
           <Select>
             <option>Option 1</option>
             <option>Option 2</option>
+            <option>Option 3</option>
+            <option>Option 4</option>
           </Select>
+
+          <h4>Search input</h4>
+          <Search placeholder="Search..." />
         </TabPage>
 
         <TabPage match="./tabs/*">
@@ -68,13 +80,16 @@ export const Examples = () => (
             <Tab to="tabs/third">Hello</Tab>
           </Tabs>
 
-          <TabPanel match="tabs/first" defaultOf="./tabs">
-            First
-          </TabPanel>
-          <TabPanel match="tabs/second">
-            Second <Link to="/examples">Back to examples</Link>
-          </TabPanel>
-          <TabPanel match="tabs/third">Third</TabPanel>
+          <div className="py-4">
+            <TabPanel match="tabs/first" defaultOf="./tabs">
+              First
+            </TabPanel>
+            <TabPanel match="tabs/second">
+              <div>Second</div>
+              <Link to="/examples">Back to examples</Link>
+            </TabPanel>
+            <TabPanel match="tabs/third">Third</TabPanel>
+          </div>
         </TabPage>
 
         <TabPage match="headings">

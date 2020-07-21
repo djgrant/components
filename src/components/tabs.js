@@ -15,15 +15,17 @@ const getTabClasses = (active, direction) =>
     "font-medium",
     "text-gray-600",
     "hover:text-blue-500",
-    "border-blue-500",
     "no-underline",
+    "border-transparent",
+    "text-base",
     {
-      "text-blue-500": !active,
-      "border-b-4": !active && direction === "horizontal",
-      "border-l-4": !active && direction === "vertical",
+      "text-blue-500": active,
+      "border-blue-500": active,
     },
-    direction === "vertical" && ["py-3", "pl-4"],
-    direction === "horizontal" && ["py-4", "px-6"]
+    direction === "vertical" && ["py-3", "pl-5", "border-l-4"],
+    direction === "horizontal" && ["py-4", "px-6", "border-b-4"],
+    direction === "vertical" && active && "border-l-4",
+    direction === "horizontal" && active && "border-b-4"
   );
 
 export const Tabs = ({ children, direction = "horizontal", className }) => (
@@ -38,12 +40,12 @@ export const Tab = ({ children, to, direction, ...props }) => (
   <TabMatch match={to.startsWith("#") ? to : `${to}/*`} {...props}>
     {(active) =>
       active ? (
-        <div className={getTabClasses(false, direction)}>{children}</div>
+        <div className={getTabClasses(true, direction)}>{children}</div>
       ) : (
         <Link
           to={to.startsWith("#") ? window.location.pathname + to : to}
           replace={to.startsWith("#")}
-          className={getTabClasses(true, direction)}
+          className={getTabClasses(false, direction)}
         >
           {children}
         </Link>

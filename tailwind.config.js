@@ -16,6 +16,9 @@ module.exports = {
           h3: {
             fontFamily: "Rubik",
           },
+          a: {
+            color: "#38a169",
+          },
         },
       },
     },

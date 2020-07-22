@@ -4,7 +4,7 @@ export * from "./card";
 export * from "./container";
 export * from "./form";
 export * from "./heading";
+export * from "./link";
 export * from "./progress";
 export * from "./prose";
 export * from "./tabs";
-export { Link } from "@reach/router";

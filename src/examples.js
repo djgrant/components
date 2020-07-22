@@ -91,7 +91,12 @@ export const Examples = () => (
 
           <TabPage match="cards">
             <h1>Cards</h1>
-            <Card>Hello card</Card>
+            <Card className="h-24 p-4">Hello</Card>
+            <br />
+            <Card>
+              <div className="h-16 bg-teal-400"></div>
+              <div className="h-16 p-4">Hello</div>
+            </Card>
           </TabPage>
 
           <TabPage match="forms">

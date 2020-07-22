@@ -1,6 +1,7 @@
 import React from "react";
 import { importMDX } from "mdx.macro";
 import {
+  Badge,
   Button,
   Card,
   Heading,
@@ -37,6 +38,7 @@ export const Examples = () => (
           Components
         </Heading>
         <Tabs direction="vertical">
+          <Tab to="badges">Badges</Tab>
           <Tab to="buttons">Buttons</Tab>
           <Tab to="cards">Cards</Tab>
           <Tab to="forms">Forms</Tab>
@@ -52,6 +54,24 @@ export const Examples = () => (
           <TabPage match="readme" default>
             <Readme />
           </TabPage>
+
+          <TabPage match="badges">
+            <h1>Badges</h1>
+            {[
+              { label: "Inbox", color: "blue", content: 23 },
+              { label: "Read", color: "green", content: 13 },
+              { label: "Unread", color: "red", content: 10 },
+            ].map((badge) => (
+              <div
+                key={badge.label}
+                className="flex justify-between w-48 py-2 border-b"
+              >
+                <div className="font-medium">{badge.label}</div>
+                <Badge color={badge.color}>{badge.content}</Badge>
+              </div>
+            ))}
+          </TabPage>
+
           <TabPage match="buttons">
             <h1>Buttons</h1>
             <div className="space-y-4">

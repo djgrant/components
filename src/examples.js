@@ -41,6 +41,7 @@ export const Examples = () => (
           <Tab to="cards">Cards</Tab>
           <Tab to="forms">Forms</Tab>
           <Tab to="headings">Headings</Tab>
+          <Tab to="links">Links</Tab>
           <Tab to="progress">Progress</Tab>
           <Tab to="tabs">Tabs</Tab>
         </Tabs>
@@ -90,6 +91,18 @@ export const Examples = () => (
             <Heading h4>Heading 4</Heading>
             <Heading h5>Heading 5</Heading>
             <Heading h6>Heading 6</Heading>
+          </TabPage>
+
+          <TabPage match="links">
+            <h1>Links</h1>
+            <p>
+              <Link to="/badges">Go to badges</Link>
+            </p>
+            <p>
+              <Link to="https://github.com/djgrant/components/">
+                Github Repository
+              </Link>
+            </p>
           </TabPage>
 
           <TabPage match="progress">

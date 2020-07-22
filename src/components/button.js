@@ -1,10 +1,11 @@
 import React from "react";
 import { tw } from "tailwindcss-classnames";
 
-const baseClasses = tw("text-sm", "font-semibold", "rounded");
-const blankClasses = tw("font-semibold", "text-gray-800");
-const primaryClasses = tw("bg-blue-500", "hover:bg-blue-700", "text-white");
-const secondaryClasses = tw(
+const baseClasses = tw("font-semibold", "rounded");
+
+const solidClasses = tw("bg-blue-500", "hover:bg-blue-700", "text-white");
+
+const outlineClasses = tw(
   "bg-white",
   "hover:bg-gray-100",
   "text-gray-800",
@@ -14,28 +15,25 @@ const secondaryClasses = tw(
 
 const getTypeClasses = (props) =>
   ({
-    blank: blankClasses,
-    primary: primaryClasses,
-    [undefined]: secondaryClasses,
-  }[props.type]);
+    solid: solidClasses,
+    outline: outlineClasses,
+  }[props.type || "solid"]);
 
 const getSizeClasses = (props) =>
   ({
-    l: tw("text-s", "py-3", "px-4"),
-    m: tw("text-xs", "py-2", "px-3"),
-    s: tw("text-xs", "py-1", "px-2"),
-    0: tw("text-xs"),
-    [undefined]: tw("text-xs", "py-2", "px-3"),
-  }[props.size]);
+    lg: tw("text-base", "py-3", "px-4"),
+    md: tw("text-sm", "py-2", "px-3"),
+    sm: tw("text-xs", "py-1", "px-2"),
+  }[props.size || "md"]);
 
 export const Button = (props) => (
   <button
     {...props}
-    className={[
+    className={tw(
       baseClasses,
       getTypeClasses(props),
       getSizeClasses(props),
-      props.className,
-    ].join(" ")}
+      props.className
+    )}
   />
 );

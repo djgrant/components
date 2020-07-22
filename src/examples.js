@@ -54,10 +54,18 @@ export const Examples = () => (
           </TabPage>
           <TabPage match="buttons">
             <h1>Buttons</h1>
-            <div className="flex space-x-2">
-              <Button>Click me</Button>
-              <Button type="primary">Click me</Button>
-              <Button type="blank">Click me</Button>
+            <div className="space-y-4">
+              {["sm", "md", "lg"].map((size) => (
+                <div key={size}>
+                  <h4>Size {size}</h4>
+                  <div className="flex space-x-2">
+                    <Button size={size}>Click me</Button>
+                    <Button size={size} type="outline">
+                      Click me
+                    </Button>
+                  </div>
+                </div>
+              ))}
             </div>
           </TabPage>
 

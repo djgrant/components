@@ -6,15 +6,16 @@ import {
   Card,
   Heading,
   Input,
+  Label,
   Link,
   Progress,
   Prose,
-  Search,
   Select,
   Tabs,
   Tab,
   TabPage,
   TabPanel,
+  Textarea,
 } from "./components";
 
 const Readme = importMDX.sync("../README.md");
@@ -101,19 +102,88 @@ export const Examples = () => (
 
           <TabPage match="forms">
             <h1>Forms</h1>
-            <h4>Input</h4>
-            <Input type="password" />
+            <p>
+              A React wrapper for{" "}
+              <Link to="https://tailwindcss-custom-forms.netlify.app/">
+                Tailwind CSS Custom Forms
+              </Link>
+            </p>
 
-            <h4>Select</h4>
-            <Select>
-              <option>Option 1</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-              <option>Option 4</option>
-            </Select>
+            <hr className="my-8" />
 
-            <h4>Search input</h4>
-            <Search placeholder="Search..." />
+            <h3>Inputs</h3>
+            <div className="space-y-4">
+              <Input type="search" placeholder="Search issues..." />
+
+              <Label>
+                <div>Your name</div>
+                <Input placeholder="Daniel Spaniel" />
+              </Label>
+
+              <Label>
+                <div>Prefered tools</div>
+                <Select multiple className="w-full">
+                  <option>Tailwind</option>
+                  <option>Styled System</option>
+                  <option>Styled Components</option>
+                  <option>Styled JSX</option>
+                  <option>CSS Modules</option>
+                </Select>
+              </Label>
+            </div>
+
+            <h3>Inline Forms</h3>
+            <Card className="p-8 space-y-4 bg-gray-200">
+              <Label layout="col">
+                <div className="md:w-1/3">Requested Limit</div>
+                <Select>
+                  <option>$1,000</option>
+                  <option>$5,000</option>
+                  <option>$10,000</option>
+                  <option>$25,000</option>
+                </Select>
+              </Label>
+              <Label layout="col">
+                <div className="md:w-1/3">Password</div>
+                <Input type="password" />
+              </Label>
+            </Card>
+
+            <h3>Textarea</h3>
+            <Label>
+              <div>Notes</div>
+              <Textarea rows="3" className="w-full" />
+            </Label>
+
+            <h3>Radios</h3>
+            <div className="space-y-2">
+              <Label layout="inline">
+                <Input
+                  type="radio"
+                  name="accountType"
+                  value="personal"
+                  color="pink"
+                />
+                <span>Personal</span>
+              </Label>
+              <Label layout="inline">
+                <Input
+                  type="radio"
+                  name="accountType"
+                  value="busines"
+                  color="teal"
+                />
+                <span>Business</span>
+              </Label>
+            </div>
+
+            <h3>Checkboxes</h3>
+            <Label layout="inline">
+              <Input type="checkbox" />
+              <span>
+                I agree to the <span className="underline">privacy policy</span>
+              </span>
+            </Label>
           </TabPage>
 
           <TabPage match="headings">

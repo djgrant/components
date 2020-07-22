@@ -1,16 +1,19 @@
 import React from "react";
 import { TabMatch } from "./tab-match";
 import { Link } from "@reach/router";
-import { tw } from "tailwindcss-classnames";
+import { tw } from "../utils/tw";
+import { switchOn, ifElse } from "../utils/fp";
 
-const getTabsClasses = (direction) =>
-  tw("flex", {
-    "flex-col": direction === "vertical",
-    "sm:flex-row": direction === "horizonal",
-  });
+const StyledTabs = tw.nav(({ direction }) => [
+  "flex",
+  switchOn(direction, {
+    vertical: "flex-col",
+    horizontal: "sm:flex-row",
+  }),
+]);
 
-const getTabClasses = (active, direction) =>
-  tw(
+const tabStyles = ({ active, direction }) =>
+  tw.classnames(
     "block",
     "font-medium",
     "text-gray-600",
@@ -18,34 +21,38 @@ const getTabClasses = (active, direction) =>
     "no-underline",
     "border-transparent",
     "text-base",
-    {
-      "text-blue-500": active,
-      "border-blue-500": active,
-    },
-    direction === "vertical" && ["py-3", "pl-5", "border-l-4"],
-    direction === "horizontal" && ["py-4", "px-6", "border-b-4"],
-    direction === "vertical" && active && "border-l-4",
-    direction === "horizontal" && active && "border-b-4"
+    switchOn(direction, {
+      vertical: ["py-3", "pl-5", "border-l-4"],
+      horizontal: ["py-4", "px-6", "border-b-4"],
+    }),
+    ifElse(active, ["text-blue-500", "border-blue-500"]),
+    ifElse(
+      active,
+      switchOn(direction, {
+        vertical: "border-l-4",
+        horizontal: "border-b-4",
+      })
+    )
   );
 
-export const Tabs = ({ children, direction = "horizontal", className }) => (
-  <nav className={tw(getTabsClasses(direction), className)}>
+export const Tabs = ({ children, direction = "horizontal" }) => (
+  <StyledTabs direction={direction}>
     {React.Children.map(children, (el) =>
       React.cloneElement(el, { direction })
     )}
-  </nav>
+  </StyledTabs>
 );
 
 export const Tab = ({ children, to, direction, ...props }) => (
   <TabMatch match={to.startsWith("#") ? to : `${to}/*`} {...props}>
     {(active) =>
       active ? (
-        <div className={getTabClasses(true, direction)}>{children}</div>
+        <div className={tabStyles({ active, direction })}>{children}</div>
       ) : (
         <Link
+          className={tabStyles({ active, direction })}
           to={to.startsWith("#") ? window.location.pathname + to : to}
           replace={to.startsWith("#")}
-          className={getTabClasses(false, direction)}
         >
           {children}
         </Link>

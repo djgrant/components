@@ -1,8 +1,3 @@
-import React from "react";
-import { tw } from "tailwindcss-classnames";
+import { tw } from "../utils/tw";
 
-const classes = tw("max-w-lg", "mx-auto");
-
-export const Container = ({ children, className }) => (
-  <div className={`${classes} ${className}`}>{children}</div>
-);
+export const Container = tw.div("max-w-lg", "mx-auto");

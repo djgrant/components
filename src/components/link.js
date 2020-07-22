@@ -1,16 +1,17 @@
 import React from "react";
-import { Link as InternalLink } from "@reach/router";
-import { tw } from "tailwindcss-classnames";
+import { Link as RouterLink } from "@reach/router";
+import { tw } from "../utils/tw";
 
-const getLinkClasses = (props) => tw("text-green-600", props.className);
+const ExternalLink = tw.a("text-green-600");
+const InternalLink = tw(RouterLink)("text-green-600");
 
-export const Link = (props) => {
-  if (props.to.startsWith("http")) {
+export const Link = ({ to, ...props }) => {
+  if (to.startsWith("http")) {
     return (
-      <a {...props} href={props.to} className={getLinkClasses(props)}>
+      <ExternalLink {...props} href={to}>
         {props.children}
-      </a>
+      </ExternalLink>
     );
   }
-  return <InternalLink {...props} className={getLinkClasses(props)} />;
+  return <InternalLink to={to} {...props} />;
 };

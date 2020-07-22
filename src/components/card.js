@@ -1,8 +1,8 @@
-import React from "react";
-import { tw } from "tailwindcss-classnames";
+import { tw } from "../utils/tw";
 
-const classes = tw("rounded", "overflow-hidden", "shadow-lg", "bg-white");
-
-export const Card = (props) => (
-  <div {...props} className={[classes, props.className].join(" ")} />
+export const Card = tw.div(
+  "rounded",
+  "overflow-hidden",
+  "shadow-lg",
+  "bg-white"
 );

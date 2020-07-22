@@ -1,51 +1,56 @@
 import React from "react";
-import { tw } from "tailwindcss-classnames";
+import { tw } from "../utils/tw";
+import { switchOn } from "../utils/fp";
 
-const getHeight = (config) =>
-  ({
-    sm: 6,
-    md: 8,
-    lg: 10,
-  }[config.size || "md"]);
+const BarContainer = tw.div(
+  "relative",
+  "flex",
+  "w-full",
+  "overflow-hidden",
+  "bg-gray-300",
+  "rounded-md",
+  "shadow-inner"
+);
 
-const getWrapperClasses = () =>
-  tw(
-    "relative",
-    "flex",
-    "w-full",
-    "overflow-hidden",
-    "bg-gray-300",
-    "rounded-md",
-    "shadow-inner"
-  );
+const Bar = tw.div(({ color, size }) => [
+  "px-2",
+  "py-1",
+  `bg-${color}-400`,
+  switchOn(size, {
+    sm: "h-6",
+    default: "h-8",
+    lg: "h-10",
+  }),
+]);
 
-const getBarClass = (bar, config) =>
-  tw(`h-${getHeight(config)}`, "px-2", "py-1", `bg-${bar.color}-400`);
+const Text = tw.div(({ size }) => [
+  "absolute",
+  "inset-0",
+  "h-full",
+  "px-2",
+  "text-xs",
+  "text-white",
+  "pointer-events-none",
+  switchOn(size, {
+    sm: "leading-6",
+    default: "leading-8",
+    lg: "leading-10",
+  }),
+]);
 
-const getTextClasses = (config) =>
-  tw(
-    "absolute",
-    "inset-0",
-    "h-full",
-    "px-2",
-    "text-xs",
-    "text-white",
-    `leading-${getHeight(config)}`,
-    "pointer-events-none"
-  );
-
-export const Progress = ({ children, bars, ...config }) => {
+export const Progress = ({ children, bars, size }) => {
   return (
-    <div className={getWrapperClasses(config)}>
+    <BarContainer>
       {bars.map((bar, i) => (
-        <div
+        <Bar
           key={i}
-          className={getBarClass(bar, config)}
+          color={bar.color}
+          size={size}
           style={{ width: `${bar.pc}%` }}
           title={bar.label}
-        ></div>
+        />
       ))}
-      <div className={getTextClasses(config)}>{children}</div>
-    </div>
+      <Text size={size}>{children}</Text>
+    </BarContainer>
   );
 };

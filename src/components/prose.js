@@ -1,8 +1,3 @@
-import React from "react";
-import { tw } from "tailwindcss-classnames";
+import { tw } from "../utils/tw";
 
-const classes = tw("prose", "prose-sm", "lg:prose");
-
-export const Prose = ({ children, className }) => (
-  <div className={`${classes} ${className}`}>{children}</div>
-);
+export const Prose = tw.div("prose", "prose-sm", "lg:prose");

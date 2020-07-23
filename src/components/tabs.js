@@ -2,11 +2,11 @@ import React from "react";
 import { TabMatch } from "./tab-match";
 import { Link } from "@reach/router";
 import { tw } from "../utils/tw";
-import { switchOn, ifElse } from "../utils/fp";
+import { switchcase, ifElse } from "../utils/fp";
 
 const StyledTabs = tw.nav(({ direction }) => [
   "flex",
-  switchOn(direction, {
+  switchcase(direction, {
     vertical: "flex-col",
     horizontal: "sm:flex-row",
   }),
@@ -21,14 +21,14 @@ const tabStyles = ({ active, direction }) =>
     "no-underline",
     "border-transparent",
     "text-base",
-    switchOn(direction, {
+    switchcase(direction, {
       vertical: ["py-3", "pl-5", "border-l-4"],
       horizontal: ["py-4", "px-6", "border-b-4"],
     }),
     ifElse(active, ["text-blue-500", "border-blue-500"]),
     ifElse(
       active,
-      switchOn(direction, {
+      switchcase(direction, {
         vertical: "border-l-4",
         horizontal: "border-b-4",
       })

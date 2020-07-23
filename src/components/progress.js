@@ -1,6 +1,6 @@
 import React from "react";
 import { tw } from "../utils/tw";
-import { switchOn } from "../utils/fp";
+import { switchcase } from "../utils/fp";
 
 const BarContainer = tw.div(
   "relative",
@@ -16,7 +16,7 @@ const Bar = tw.div(({ color, size }) => [
   "px-2",
   "py-1",
   `bg-${color}-400`,
-  switchOn(size, {
+  switchcase(size, {
     sm: "h-6",
     default: "h-8",
     lg: "h-10",
@@ -31,7 +31,7 @@ const Text = tw.div(({ size }) => [
   "text-xs",
   "text-white",
   "pointer-events-none",
-  switchOn(size, {
+  switchcase(size, {
     sm: "leading-6",
     default: "leading-8",
     lg: "leading-10",

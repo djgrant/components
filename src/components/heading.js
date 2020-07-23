@@ -1,10 +1,10 @@
 import React from "react";
 import { tw } from "../utils/tw";
-import { switchOn } from "../utils/fp";
+import { switchcase } from "../utils/fp";
 
 const getHeadingComponent = (level) =>
   tw(level)(
-    switchOn(level, {
+    switchcase(level, {
       h1: ["text-2xl", "font-bold", "font-heading"],
       h2: ["text-xl", "font-heading"],
       h3: ["text-lg", "font-bold", "text-gray-800", "font-heading"],

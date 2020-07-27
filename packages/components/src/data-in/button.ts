@@ -1,7 +1,11 @@
-import { tw } from "../utils/tw";
-import { switchcase } from "../utils/fp";
+import { tw, switchcase } from "@djgrant/react-tailwind";
 
-export const Button = tw.button(({ type, size }) => [
+export interface ButtonProps {
+  type?: "outline";
+  size?: "sm" | "lg";
+}
+
+export const Button = tw.button(({ type, size }: ButtonProps) => [
   "font-semibold",
   "rounded",
   switchcase(type, {

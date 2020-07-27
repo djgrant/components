@@ -1,10 +1,20 @@
 import React from "react";
-import { TabMatch } from "./tab-match";
 import { Link } from "@reach/router";
-import { tw } from "../utils/tw";
-import { switchcase, ifElse } from "../utils/fp";
+import { tw, switchcase, ifElse } from "@djgrant/react-tailwind";
+import { TabMatch, TabMatchProps } from "./tab-match";
 
-const StyledTabs = tw.nav(({ direction }) => [
+type Direction = "horizontal" | "vertical";
+
+export interface TabsProps {
+  direction: Direction;
+}
+
+export interface TabProps {
+  to: string;
+  direction: Direction;
+}
+
+const StyledTabs = tw.nav(({ direction }: TabsProps) => [
   "flex",
   switchcase(direction, {
     vertical: "flex-col",
@@ -12,7 +22,13 @@ const StyledTabs = tw.nav(({ direction }) => [
   }),
 ]);
 
-const tabStyles = ({ active, direction }) =>
+const tabStyles = ({
+  active,
+  direction,
+}: {
+  active: boolean;
+  direction: Direction;
+}) =>
   tw.classnames(
     "block",
     "font-medium",
@@ -35,15 +51,26 @@ const tabStyles = ({ active, direction }) =>
     )
   );
 
-export const Tabs = ({ children, direction = "horizontal" }) => (
+export const Tabs: React.FC<TabsProps> = ({
+  children,
+  direction = "horizontal",
+}) => (
   <StyledTabs direction={direction}>
-    {React.Children.map(children, (el) =>
-      React.cloneElement(el, { direction })
-    )}
+    {React.Children.map(children, (el) => {
+      if (React.isValidElement(el) && el.type === Tab) {
+        return React.cloneElement(el, { direction });
+      }
+      return el;
+    })}
   </StyledTabs>
 );
 
-export const Tab = ({ children, to, direction, ...props }) => (
+export const Tab: React.FC<TabProps> = ({
+  children,
+  to,
+  direction,
+  ...props
+}) => (
   <TabMatch match={to.startsWith("#") ? to : `${to}/*`} {...props}>
     {(active) =>
       active ? (
@@ -61,7 +88,7 @@ export const Tab = ({ children, to, direction, ...props }) => (
   </TabMatch>
 );
 
-export const TabPanel = (props) => (
+export const TabPanel: React.FC<TabMatchProps> = (props) => (
   <TabMatch {...props}>
     {(isMatch) =>
       isMatch ? <>{props.children}</> : <div hidden>{props.children}</div>
@@ -69,7 +96,7 @@ export const TabPanel = (props) => (
   </TabMatch>
 );
 
-export const TabPage = (props) => (
+export const TabPage: React.FC<TabMatchProps> = (props) => (
   <TabMatch {...props}>
     {(isMatch) => (isMatch ? <>{props.children}</> : null)}
   </TabMatch>

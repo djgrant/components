@@ -2,7 +2,14 @@ import React from "react";
 import { tw } from "../utils/tw";
 import { switchcase } from "../utils/fp";
 
-const getHeadingComponent = (level) =>
+type Level = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+
+interface Props {
+  Level: boolean;
+  className: string;
+}
+
+const getHeadingComponent = (level: Level) =>
   tw(level)(
     switchcase(level, {
       h1: ["text-2xl", "font-bold", "font-heading"],
@@ -14,8 +21,12 @@ const getHeadingComponent = (level) =>
     })
   );
 
-export const Heading = ({ children, as, className, ...levels }) => {
-  const level = Object.keys(levels).filter(Boolean)[0] || "h3";
+export const Heading: React.FC<Props> = ({
+  children,
+  className,
+  ...levels
+}) => {
+  const level = (Object.keys(levels).filter(Boolean)[0] || "h3") as Level;
   return React.createElement(
     getHeadingComponent(level),
     { className },

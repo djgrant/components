@@ -5,7 +5,13 @@ import { tw } from "../utils/tw";
 const ExternalLink = tw.a("text-green-600");
 const InternalLink = tw(RouterLink)("text-green-600");
 
-export const Link = ({ to, ...props }) => {
+// const A = () => <a />
+
+interface Props {
+  to: string;
+}
+
+export const Link: React.FC<Props> = ({ to, ...props }) => {
   if (to.startsWith("http")) {
     return (
       <ExternalLink {...props} href={to}>

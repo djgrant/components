@@ -1,4 +1,6 @@
-export const tags = [
+export type Tag = keyof JSX.IntrinsicElements;
+
+export const tags: Tag[] = [
   "a",
   "abbr",
   "address",
@@ -63,7 +65,6 @@ export const tags = [
   "main",
   "map",
   "mark",
-  "marquee",
   "menu",
   "menuitem",
   "meta",

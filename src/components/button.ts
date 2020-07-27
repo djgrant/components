@@ -1,7 +1,12 @@
 import { tw } from "../utils/tw";
 import { switchcase } from "../utils/fp";
 
-export const Button = tw.button(({ type, size }) => [
+interface Props {
+  type?: "outline";
+  size?: "sm" | "lg";
+}
+
+export const Button = tw.button<Props>(({ type, size }) => [
   "font-semibold",
   "rounded",
   switchcase(type, {

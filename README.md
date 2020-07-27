@@ -1,9 +1,32 @@
-# Components
+# Component library
+
+Packages for building user interfaces fast.
+
+## [components](./packages/components)
 
 A hacker-friendly collection of React components.
 
-Lightweight, and written with [tailwindcss](https://tailwindcss.com), the components are intended for forking, rather than being bloated with configuration for every variant imaginable.
+Lightweight, and written with [tailwindcss][tw], these components are intended for forking, rather than being bloated with configuration for every variant imaginable.
 
-They can, of course, be imported and customised by [configuring tailwind](https://tailwindcss.com/docs/configuration) or passing tailwind classes through `className` – that's certainly not a bad option for prototypes. But, for any serious customisation, I find it makes most sense just to copy the components over to the new project and tweak to taste.
+[Preview components](https://components.danielgrant.co)
 
-The components take a fair bit of inspiration from [Whimsical](https://whimsical.com). I use Whimsical for prototyping (and love it) so it's dead handy to have a set of components that loosely map to its design system.
+## [react-tailwind](./packages/react-tailwind)
+
+Build React components using [tailwindcss][tw] and a [styled-components][sc] like API.
+
+```js
+import { tw, switchcase } from "@djgrant/react-tailwind";
+
+const Button = styled.button((props) => [
+  "font-semibold",
+  "rounded",
+  switchcase(size, {
+    lg: ["text-base", "py-3", "px-4"],
+    sm: ["text-xs", "py-1", "px-2"],
+    default: ["text-sm", "py-2", "px-3"],
+  }),
+]);
+```
+
+[tw]: https://tailwindcss.com
+[sc]: https://styled-components.com

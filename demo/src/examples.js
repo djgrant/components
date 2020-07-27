@@ -18,7 +18,7 @@ import {
   Textarea,
 } from "@djgrant/components";
 
-const Readme = importMDX.sync("../../README.md");
+const Readme = importMDX.sync("../../packages/components/README.md");
 
 export const Examples = () => (
   <>

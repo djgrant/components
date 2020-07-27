@@ -1,4 +1,4 @@
-import { tw } from "../utils/tw";
+import { tw } from "@djgrant/react-tailwind";
 
 export const Card = tw.div(
   "rounded",

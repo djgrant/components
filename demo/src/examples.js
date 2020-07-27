@@ -16,9 +16,9 @@ import {
   TabPage,
   TabPanel,
   Textarea,
-} from "./components";
+} from "@djgrant/components";
 
-const Readme = importMDX.sync("../README.md");
+const Readme = importMDX.sync("../../README.md");
 
 export const Examples = () => (
   <>
@@ -29,29 +29,36 @@ export const Examples = () => (
     </header>
 
     <div className="flex">
-      <div className="w-48 py-6 space-y-4">
+      <div className="w-48 py-6 ">
         <Tabs direction="vertical">
           <Tab to="readme" default>
             Readme
           </Tab>
-        </Tabs>
-        <Heading h6 className="px-6">
-          Components
-        </Heading>
-        <Tabs direction="vertical">
-          <Tab to="badges">Badges</Tab>
-          <Tab to="buttons">Buttons</Tab>
-          <Tab to="cards">Cards</Tab>
+          <Heading h6 className="px-6 my-4">
+            Navigation
+          </Heading>
+          <Tab to="tabs">Tabs</Tab>
+          <Heading h6 className="px-6 my-4">
+            Data Entry
+          </Heading>
           <Tab to="forms">Forms</Tab>
+          <Tab to="buttons">Buttons</Tab>
+          <Heading h6 className="px-6 my-4">
+            Data Viz
+          </Heading>
+          <Tab to="badges">Badges</Tab>
+          <Tab to="cards">Cards</Tab>
+          <Tab to="progress">Progress</Tab>
+          <Heading h6 className="px-6 my-4">
+            Text
+          </Heading>
           <Tab to="headings">Headings</Tab>
           <Tab to="links">Links</Tab>
-          <Tab to="progress">Progress</Tab>
-          <Tab to="tabs">Tabs</Tab>
         </Tabs>
       </div>
 
       <main className="flex-grow">
-        <Prose className="p-6">
+        <Prose className="p-6 pt-8">
           <TabPage match="readme" default>
             <Readme />
           </TabPage>

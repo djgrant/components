@@ -1,5 +1,5 @@
 import React from "react";
-import { Match, Location } from "@reach/router";
+import { Match, Location, WindowLocation } from "@reach/router";
 
 /* 
   TabMatch
@@ -12,7 +12,14 @@ import { Match, Location } from "@reach/router";
                   This avoids a flash of content.
 */
 
-export const TabMatch = ({
+export interface TabMatchProps {
+  match: string;
+  default?: boolean;
+  defaultOf?: string;
+  children: (b: boolean) => React.ReactNode;
+}
+
+export const TabMatch: React.FC<TabMatchProps> = ({
   children,
   match,
   default: isDefault,
@@ -57,10 +64,14 @@ export const TabMatch = ({
   );
 };
 
-const stripTrailingSlash = (str) => str.replace(/\/+$/, "");
-const stripLeadingSlash = (str) => str.replace(/^\/+/, "");
+const stripTrailingSlash = (str: string) => str.replace(/\/+$/, "");
+const stripLeadingSlash = (str: string) => str.replace(/^\/+/, "");
 
-const getNavigateUrl = (location, parentPath, match) => {
+const getNavigateUrl = (
+  location: WindowLocation,
+  parentPath: string,
+  match: string
+) => {
   const parentPathSegment = parentPath.replace("./", "");
   const pathRelativeToParent = match
     .replace(`${parentPathSegment}${parentPathSegment && "/"}`, "")

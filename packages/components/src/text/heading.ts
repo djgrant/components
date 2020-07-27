@@ -1,8 +1,18 @@
 import React from "react";
-import { tw } from "../utils/tw";
-import { switchcase } from "../utils/fp";
+import { tw, switchcase } from "@djgrant/react-tailwind";
 
-const getHeadingComponent = (level) =>
+type Level = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+
+type LevelProps = {
+  [k in Level]: boolean;
+};
+
+export interface HeadingProps extends LevelProps {
+  as?: Level;
+  className: string;
+}
+
+const getHeadingComponent = (level: Level) =>
   tw(level)(
     switchcase(level, {
       h1: ["text-2xl", "font-bold", "font-heading"],
@@ -14,8 +24,13 @@ const getHeadingComponent = (level) =>
     })
   );
 
-export const Heading = ({ children, as, className, ...levels }) => {
-  const level = Object.keys(levels).filter(Boolean)[0] || "h3";
+export const Heading: React.FC<HeadingProps> = ({
+  children,
+  as,
+  className,
+  ...levels
+}) => {
+  const level = (Object.keys(levels).filter(Boolean)[0] || "h3") as Level;
   return React.createElement(
     getHeadingComponent(level),
     { className },

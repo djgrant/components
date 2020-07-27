@@ -5,5 +5,8 @@
     "demo",
     "packages/components",
     "packages/react-tailwind"
-  ]
+  ],
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
 }

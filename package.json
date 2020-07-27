@@ -1,6 +1,9 @@
 {
   "private": true,
   "name": "components",
+  "scripts": {
+    "build": "lerna run build & yarn workspace demo build"
+  },
   "workspaces": [
     "demo",
     "packages/components",

@@ -2,6 +2,8 @@
   "version": "0.1.1",
   "name": "@djgrant/components",
   "author": "Daniel Grant",
+  "homepage": "https://components.danielgrant.co",
+  "repository": "github:djgrant/components",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/c.esm.js",

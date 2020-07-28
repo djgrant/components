@@ -6,4 +6,4 @@ logs
 node_modules
 build
 
-src/tailwind.output.css
+tailwind.output.css

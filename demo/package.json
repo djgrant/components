@@ -3,13 +3,11 @@
   "name": "demo",
   "version": "0.1.0",
   "scripts": {
-    "prebuild": "npm run build:tailwind",
+    "prepack": "npm run build:tailwind",
     "build:tailwind": "tailwindcss build src/tailwind.css -o src/tailwind.output.css",
     "build": "react-scripts build",
-    "prestart": "npm run build:tailwind",
     "start": "react-scripts start",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom"
   },
   "dependencies": {
     "@djgrant/components": "0.1.0",

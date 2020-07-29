@@ -8,9 +8,9 @@ const getHeadingComponent = (level: Level) =>
       h1: ["text-2xl", "font-bold", "font-heading"],
       h2: ["text-xl", "font-heading"],
       h3: ["text-lg", "font-bold", "font-heading"],
-      h4: ["font-bold"],
-      h5: ["text-sm", "font-bold", "uppercase"],
-      h6: ["text-xs", "font-medium", "uppercase"],
+      h4: ["font-bold", "text-gray-600"],
+      h5: ["text-sm", "font-bold", "uppercase", "text-gray-600"],
+      h6: ["text-xs", "font-medium", "uppercase", "text-gray-500"],
     })
   );
 

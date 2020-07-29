@@ -8,7 +8,7 @@ export interface StyledInputProps {
   color?: string;
 }
 
-type InputProps = IntrinsicProps & StyledInputProps;
+export type InputProps = IntrinsicProps & StyledInputProps;
 
 export const BaseInput = tw.input<StyledInputProps>(({ type, size, color }) => [
   switchcase(type, {

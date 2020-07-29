@@ -1,10 +1,10 @@
 import { tw, switchcase } from "@djgrant/react-tailwind";
 
 export interface LabelProps {
-  layout: "col" | "inline";
+  layout?: "col" | "inline";
 }
 
-export const Label = tw.label((props: LabelProps) => [
+export const Label = tw.label<LabelProps>((props) => [
   "block",
   "text-gray-700",
   switchcase(props.layout, {

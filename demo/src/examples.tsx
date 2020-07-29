@@ -149,7 +149,7 @@ export const Examples: React.FC<RouteComponentProps> = () => (
             <h3>Textarea</h3>
             <Label>
               <div>Notes</div>
-              <Textarea rows="3" className="w-full" />
+              <Textarea rows={3} className="w-full" />
             </Label>
 
             <h3>Radios</h3>

@@ -7,6 +7,7 @@ interface BadgeProps {
 
 const StyledBadge = tw.span<BadgeProps>((props) => [
   "h-6",
+  "px-2",
   "leading-6",
   "text-xs",
   "text-center",

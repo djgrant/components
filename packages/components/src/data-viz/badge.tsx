@@ -1,11 +1,11 @@
+import React from "react";
 import { tw } from "@djgrant/react-tailwind";
 
-export interface BadgeProps {
+interface BadgeProps {
   color: string;
 }
 
-export const Badge = tw.span<BadgeProps>((props) => [
-  "w-6",
+const StyledBadge = tw.span<BadgeProps>((props) => [
   "h-6",
   "leading-6",
   "text-xs",
@@ -16,6 +16,10 @@ export const Badge = tw.span<BadgeProps>((props) => [
   `bg-${props.color}-300`,
   "rounded-lg",
 ]);
+
+export const Badge: React.FC<BadgeProps> = (props) => (
+  <StyledBadge style={{ minWidth: "1.5rem" }} {...props} />
+);
 
 Badge.defaultProps = {
   color: "green",

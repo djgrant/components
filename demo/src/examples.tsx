@@ -63,8 +63,8 @@ export const Examples: React.FC<RouteComponentProps> = () => (
             <h1>Badges</h1>
             {[
               { label: "Inbox", color: "blue", content: 23 },
-              { label: "Read", color: "green", content: 13 },
-              { label: "Unread", color: "red", content: 10 },
+              { label: "Read", color: "green", content: 130 },
+              { label: "Unread", color: "red", content: 11230 },
             ].map((badge) => (
               <div
                 key={badge.label}

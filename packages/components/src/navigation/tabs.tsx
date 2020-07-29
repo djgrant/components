@@ -1,17 +1,17 @@
 import React from "react";
 import { Link } from "@reach/router";
 import { tw, switchcase, ifElse } from "@djgrant/react-tailwind";
-import { TabMatch, TabMatchProps } from "./tab-match";
+import { TabMatch, TabMatchPropsNoChildren } from "./tab-match";
 
 type Direction = "horizontal" | "vertical";
 
 export interface TabsProps {
-  direction: Direction;
+  direction?: Direction;
 }
 
-export interface TabProps {
+export interface TabProps extends Partial<TabMatchPropsNoChildren> {
   to: string;
-  direction: Direction;
+  direction?: Direction;
 }
 
 const StyledTabs = tw.nav(({ direction }: TabsProps) => [
@@ -68,15 +68,17 @@ export const Tabs: React.FC<TabsProps> = ({
 export const Tab: React.FC<TabProps> = ({
   children,
   to,
-  direction,
+  direction = "horizontal",
   ...props
 }) => (
   <TabMatch match={to.startsWith("#") ? to : `${to}/*`} {...props}>
     {(active) =>
       active ? (
+        // merge classnames!
         <div className={tabStyles({ active, direction })}>{children}</div>
       ) : (
         <Link
+          // merge classnames!
           className={tabStyles({ active, direction })}
           to={to.startsWith("#") ? window.location.pathname + to : to}
           replace={to.startsWith("#")}
@@ -88,7 +90,7 @@ export const Tab: React.FC<TabProps> = ({
   </TabMatch>
 );
 
-export const TabPanel: React.FC<TabMatchProps> = (props) => (
+export const TabPanel: React.FC<TabMatchPropsNoChildren> = (props) => (
   <TabMatch {...props}>
     {(isMatch) =>
       isMatch ? <>{props.children}</> : <div hidden>{props.children}</div>
@@ -96,7 +98,7 @@ export const TabPanel: React.FC<TabMatchProps> = (props) => (
   </TabMatch>
 );
 
-export const TabPage: React.FC<TabMatchProps> = (props) => (
+export const TabPage: React.FC<TabMatchPropsNoChildren> = (props) => (
   <TabMatch {...props}>
     {(isMatch) => (isMatch ? <>{props.children}</> : null)}
   </TabMatch>

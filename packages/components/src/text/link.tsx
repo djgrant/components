@@ -13,5 +13,6 @@ export const Link: React.FC<LinkProps<{}>> = ({ to, ...props }) => {
       </ExternalLink>
     );
   }
+  // @ts-ignore
   return <InternalLink to={to} {...props} />;
 };

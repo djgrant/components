@@ -1,10 +1,16 @@
 import React from "react";
+import { RouteComponentProps } from "@reach/router";
 import { importMDX } from "mdx.macro";
 import {
   Badge,
   Button,
   Card,
-  Heading,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
   Input,
   Label,
   Link,
@@ -20,12 +26,10 @@ import {
 
 const Readme = importMDX.sync("../../packages/components/README.md");
 
-export const Examples = () => (
+export const Examples: React.FC<RouteComponentProps> = () => (
   <>
     <header className="p-6 border-b border-gray-200">
-      <Heading h1 className="text-green-500">
-        @djgrant/components
-      </Heading>
+      <H1 className="text-green-500">@djgrant/components</H1>
     </header>
 
     <div className="flex">
@@ -34,24 +38,16 @@ export const Examples = () => (
           <Tab to="readme" default>
             Readme
           </Tab>
-          <Heading h6 className="px-6 my-4">
-            Navigation
-          </Heading>
+          <H6 className="px-6 my-4">Navigation</H6>
           <Tab to="tabs">Tabs</Tab>
-          <Heading h6 className="px-6 my-4">
-            Data Entry
-          </Heading>
+          <H6 className="px-6 my-4">Data Entry</H6>
           <Tab to="forms">Forms</Tab>
           <Tab to="buttons">Buttons</Tab>
-          <Heading h6 className="px-6 my-4">
-            Data Viz
-          </Heading>
+          <H6 className="px-6 my-4">Data Viz</H6>
           <Tab to="badges">Badges</Tab>
           <Tab to="cards">Cards</Tab>
           <Tab to="progress">Progress</Tab>
-          <Heading h6 className="px-6 my-4">
-            Text
-          </Heading>
+          <H6 className="px-6 my-4">Text</H6>
           <Tab to="headings">Headings</Tab>
           <Tab to="links">Links</Tab>
         </Tabs>
@@ -87,8 +83,8 @@ export const Examples = () => (
                 <div key={size}>
                   <h4>Size {size}</h4>
                   <div className="flex space-x-2">
-                    <Button size={size}>Click me</Button>
-                    <Button size={size} type="outline">
+                    <Button hsize>Click me</Button>
+                    <Button hsize type="outline">
                       Click me
                     </Button>
                   </div>
@@ -195,12 +191,12 @@ export const Examples = () => (
 
           <TabPage match="headings">
             <h1>Headings</h1>
-            <Heading h1>Heading 1</Heading>
-            <Heading h2>Heading 2</Heading>
-            <Heading h3>Heading 3</Heading>
-            <Heading h4>Heading 4</Heading>
-            <Heading h5>Heading 5</Heading>
-            <Heading h6>Heading 6</Heading>
+            <H1>Heading 1</H1>
+            <H2>Heading 2</H2>
+            <H3>Heading 3</H3>
+            <H4>Heading 4</H4>
+            <H5>Heading 5</H5>
+            <H6>Heading 6</H6>
           </TabPage>
 
           <TabPage match="links">

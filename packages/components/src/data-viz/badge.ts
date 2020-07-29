@@ -1,11 +1,10 @@
 import { tw } from "@djgrant/react-tailwind";
-import { TBackgroundColor } from "tailwindcss-classnames";
 
 export interface BadgeProps {
-  color: TBackgroundColor;
+  color: string;
 }
 
-export const Badge = tw.span((props: BadgeProps) => [
+export const Badge = tw.span<BadgeProps>((props) => [
   "w-6",
   "h-6",
   "leading-6",
@@ -17,3 +16,7 @@ export const Badge = tw.span((props: BadgeProps) => [
   `bg-${props.color}-300`,
   "rounded-lg",
 ]);
+
+Badge.defaultProps = {
+  color: "green",
+};

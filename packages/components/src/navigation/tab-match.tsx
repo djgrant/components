@@ -12,10 +12,12 @@ import { Match, Location, WindowLocation } from "@reach/router";
                   This avoids a flash of content.
 */
 
-export interface TabMatchProps {
+export interface TabMatchPropsNoChildren {
   match: string;
   default?: boolean;
   defaultOf?: string;
+}
+export interface TabMatchProps extends TabMatchPropsNoChildren {
   children: (b: boolean) => React.ReactNode;
 }
 

@@ -3,7 +3,7 @@
   "name": "components",
   "scripts": {
     "build": "lerna run build & yarn workspace demo build",
-    "start": "lerna run start --parallel"
+    "start": "lerna run start --parallel & yarn workspace demo start"
   },
   "workspaces": [
     "demo",

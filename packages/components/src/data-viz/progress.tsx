@@ -1,39 +1,37 @@
 import React from "react";
 import { tw, switchcase } from "@djgrant/react-tailwind";
-import { TBackgroundColor } from "tailwindcss-classnames";
 
 type Size = "sm" | "lg";
 
 interface ProgressProps {
-  bars: Array<BarProps>;
+  bars: Array<{ color: string; size?: Size; label: string; pc: number }>;
   size: Size;
 }
 
 interface BarProps {
-  color: TBackgroundColor;
-  size: Size;
-  label: string;
-  pc: number;
+  color: string;
+  size?: Size;
 }
 
 interface TextProps {
   size: Size;
 }
 
-const BarContainer = tw.div(
+const BarContainer = tw.div([
   "relative",
   "flex",
   "w-full",
   "overflow-hidden",
   "bg-gray-300",
   "rounded-md",
-  "shadow-inner"
-);
+  "shadow-inner",
+]);
 
-const Bar = tw.div(({ color, size }: BarProps) => [
+const Bar = tw.div<BarProps>(({ color, size }) => [
   "px-2",
   "py-1",
   `bg-${color}-400`,
+  color && size ? ["h-6"] : "h2",
   switchcase(size, {
     sm: "h-6",
     default: "h-8",
@@ -41,7 +39,7 @@ const Bar = tw.div(({ color, size }: BarProps) => [
   }),
 ]);
 
-const Text = tw.div(({ size }: TextProps) => [
+const Text = tw.div<TextProps>(({ size }) => [
   "absolute",
   "inset-0",
   "h-full",

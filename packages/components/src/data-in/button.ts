@@ -1,14 +1,14 @@
 import { tw, switchcase } from "@djgrant/react-tailwind";
 
 export interface ButtonProps {
-  type?: "outline";
+  variant?: "outline";
   size?: "sm" | "lg";
 }
 
-export const Button = tw.button(({ type, size }: ButtonProps) => [
+export const Button = tw.button<ButtonProps>(({ variant, size }) => [
   "font-semibold",
   "rounded",
-  switchcase(type, {
+  switchcase(variant, {
     outline: [
       "bg-white",
       "hover:bg-gray-100",

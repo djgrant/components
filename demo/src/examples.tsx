@@ -79,17 +79,11 @@ export const Examples: React.FC<RouteComponentProps> = () => (
           <TabPage match="buttons">
             <h1>Buttons</h1>
             <div className="space-y-4">
-              {["sm", "md", "lg"].map((size) => (
-                <div key={size}>
-                  <h4>Size {size}</h4>
-                  <div className="flex space-x-2">
-                    <Button hsize>Click me</Button>
-                    <Button hsize type="outline">
-                      Click me
-                    </Button>
-                  </div>
-                </div>
-              ))}
+              <div className="flex space-x-2">
+                <Button size="sm">Click me</Button>
+                <Button variant="outline">Click me</Button>
+                <Button variant="outline">Click me</Button>
+              </div>
             </div>
           </TabPage>
 

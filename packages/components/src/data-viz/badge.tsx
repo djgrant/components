@@ -1,7 +1,9 @@
 import React from "react";
 import { tw } from "@djgrant/react-tailwind";
 
-interface BadgeProps {
+type IntrinsicProps = JSX.IntrinsicElements["span"];
+
+interface BadgeProps extends IntrinsicProps {
   color: string;
 }
 

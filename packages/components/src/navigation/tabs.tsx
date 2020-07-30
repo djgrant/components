@@ -12,6 +12,7 @@ export interface TabsProps {
 export interface TabProps extends Partial<TabMatchPropsNoChildren> {
   to: string;
   direction?: Direction;
+  className?: string;
 }
 
 const StyledTabs = tw.nav(({ direction }: TabsProps) => [
@@ -25,9 +26,11 @@ const StyledTabs = tw.nav(({ direction }: TabsProps) => [
 const tabStyles = ({
   active,
   direction,
+  className,
 }: {
   active: boolean;
   direction: Direction;
+  className?: string;
 }) =>
   tw.classnames(
     "block",
@@ -48,7 +51,8 @@ const tabStyles = ({
         vertical: "border-l-4",
         horizontal: "border-b-4",
       })
-    )
+    ),
+    className
   );
 
 export const Tabs: React.FC<TabsProps> = ({
@@ -74,12 +78,22 @@ export const Tab: React.FC<TabProps> = ({
   <TabMatch match={to.startsWith("#") ? to : `${to}/*`} {...props}>
     {(active) =>
       active ? (
-        // merge classnames!
-        <div className={tabStyles({ active, direction })}>{children}</div>
+        <div
+          className={tabStyles({
+            active,
+            direction,
+            className: props.className,
+          })}
+        >
+          {children}
+        </div>
       ) : (
         <Link
-          // merge classnames!
-          className={tabStyles({ active, direction })}
+          className={tabStyles({
+            active,
+            direction,
+            className: props.className,
+          })}
           to={to.startsWith("#") ? window.location.pathname + to : to}
           replace={to.startsWith("#")}
         >

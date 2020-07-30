@@ -71,7 +71,7 @@ export const Tab: React.FC<TabProps> = ({
   direction = "horizontal",
   ...props
 }) => (
-  <TabMatch match={to.startsWith("#") ? to : `${to}/*`} {...props}>
+  <TabMatch match={to.includes("#") ? to : `${to}/*`} {...props}>
     {(active) =>
       active ? (
         // merge classnames!

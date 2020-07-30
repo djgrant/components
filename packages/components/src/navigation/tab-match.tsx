@@ -31,25 +31,27 @@ export const TabMatch: React.FC<TabMatchProps> = ({
   match = stripLeadingSlash(stripTrailingSlash(match));
   const parentPath = defaultOf || "./";
 
-  if (match.startsWith("#")) {
-    return (
-      <Location>
-        {({ location, navigate }) => {
-          const isMatch = location.hash === match;
-          const isDefaultMatch = isDefault && ["", "#"].includes(location.hash);
-          if (isMatch) return children(true);
-          if (!isDefaultMatch) return children(false);
-          const navigateUrl = getNavigateUrl(location, parentPath, match);
-          navigate(navigateUrl, { replace: true });
-          return children(true);
-        }}
-      </Location>
-    );
-  }
   return (
     <Match path={parentPath}>
       {({ match: parentPathMatch }) => {
-        const isDefaultMatch = isDefault && Boolean(parentPathMatch);
+        let isDefaultMatch = isDefault && Boolean(parentPathMatch);
+
+        if (match.includes("#")) {
+          return (
+            <Location>
+              {({ location, navigate }) => {
+                const isMatch = location.hash === `#${match.split("#")[1]}`;
+                isDefaultMatch =
+                  isDefaultMatch && ["", "#"].includes(location.hash);
+                if (isMatch) return children(true);
+                if (!isDefaultMatch) return children(false);
+                const navigateUrl = getNavigateUrl(location, parentPath, match);
+                navigate(navigateUrl, { replace: true });
+                return children(true);
+              }}
+            </Location>
+          );
+        }
         return (
           <Match path={match}>
             {({ match: pathMatch, location, navigate }) => {

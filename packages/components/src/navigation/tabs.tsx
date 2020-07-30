@@ -13,7 +13,6 @@ export interface TabProps extends Partial<TabMatchPropsNoChildren> {
   to: string;
   direction?: Direction;
   className?: string;
-  children: React.ReactNode | ((props: { active: boolean }) => React.ReactNode);
 }
 
 const StyledTabs = tw.nav(({ direction }: TabsProps) => [
@@ -70,12 +69,12 @@ export const Tabs: React.FC<TabsProps> = ({
   </StyledTabs>
 );
 
-export const Tab = ({
+export const Tab: React.FC<TabProps> = ({
   children,
   to,
   direction = "horizontal",
   ...props
-}: TabProps) => (
+}) => (
   <TabMatch match={to.startsWith("#") ? to : `${to}/*`} {...props}>
     {(active) =>
       active ? (
@@ -86,7 +85,7 @@ export const Tab = ({
             className: props.className,
           })}
         >
-          {typeof children === "function" ? children({ active }) : children}
+          {children}
         </div>
       ) : (
         <Link
@@ -98,7 +97,7 @@ export const Tab = ({
           to={to.startsWith("#") ? window.location.pathname + to : to}
           replace={to.startsWith("#")}
         >
-          {typeof children === "function" ? children({ active }) : children}
+          {children}
         </Link>
       )
     }

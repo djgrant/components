@@ -8,7 +8,7 @@ A hacker-friendly collection of React components.
 
 Lightweight, and written with [tailwindcss][tw], these components are intended for forking, rather than being bloated with configuration for every variant imaginable.
 
-[Preview components](https://components.danielgrant.co)
+[Preview components →](https://components.danielgrant.co)
 
 ## [react-tailwind](./packages/react-tailwind)
 

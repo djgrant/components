@@ -69,40 +69,43 @@ export const Tabs: React.FC<TabsProps> = ({
   </StyledTabs>
 );
 
-export const Tab: React.FC<TabProps> = ({
+export const Tab: React.FC<TabProps & { getClassName?: typeof tabStyles }> = ({
   children,
   to,
   direction = "horizontal",
+  getClassName = tabStyles,
   ...props
-}) => (
-  <TabMatch match={to.startsWith("#") ? to : `${to}/*`} {...props}>
-    {(active) =>
-      active ? (
-        <div
-          className={tabStyles({
-            active,
-            direction,
-            className: props.className,
-          })}
-        >
-          {children}
-        </div>
-      ) : (
-        <Link
-          className={tabStyles({
-            active,
-            direction,
-            className: props.className,
-          })}
-          to={to.startsWith("#") ? window.location.pathname + to : to}
-          replace={to.startsWith("#")}
-        >
-          {children}
-        </Link>
-      )
-    }
-  </TabMatch>
-);
+}) => {
+  return (
+    <TabMatch match={to.startsWith("#") ? to : `${to}/*`} {...props}>
+      {(active) =>
+        active ? (
+          <div
+            className={getClassName({
+              active,
+              direction,
+              className: props.className,
+            })}
+          >
+            {children}
+          </div>
+        ) : (
+          <Link
+            className={getClassName({
+              active,
+              direction,
+              className: props.className,
+            })}
+            to={to.startsWith("#") ? window.location.pathname + to : to}
+            replace={to.startsWith("#")}
+          >
+            {children}
+          </Link>
+        )
+      }
+    </TabMatch>
+  );
+};
 
 export const TabPanel: React.FC<TabMatchPropsNoChildren> = (props) => (
   <TabMatch {...props}>

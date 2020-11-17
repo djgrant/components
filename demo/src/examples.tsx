@@ -1,6 +1,7 @@
 import React from "react";
 import { RouteComponentProps } from "@reach/router";
 import { importMDX } from "mdx.macro";
+import { tw, ifElse } from "@djgrant/react-tailwind";
 import {
   Badge,
   Button,
@@ -19,6 +20,7 @@ import {
   Select,
   Tabs,
   Tab,
+  TabProps,
   TabPage,
   TabPanel,
   Textarea,
@@ -223,25 +225,61 @@ export const Examples: React.FC<RouteComponentProps> = () => (
             <h1>Tabs</h1>
             <Tabs>
               <Tab to="tabs/first" defaultOf="./tabs">
-                Hello
+                Basic
               </Tab>
-              <Tab to="tabs/second">Hello</Tab>
-              <Tab to="tabs/third">Hello</Tab>
+              <Tab to="tabs/second">Nested</Tab>
+              <Tab to="tabs/third">Custom</Tab>
             </Tabs>
 
             <div className="py-4">
               <TabPanel match="tabs/first" defaultOf="./tabs">
-                First
-              </TabPanel>
-              <TabPanel match="tabs/second">
-                <div>Second</div>
                 <Link to="/">Back home</Link>
               </TabPanel>
-              <TabPanel match="tabs/third">Third</TabPanel>
+              <TabPanel match="tabs/second/*">
+                <Tabs direction="vertical">
+                  <Tab to="tabs/second/first" defaultOf="./tabs/second">
+                    One
+                  </Tab>
+                  <Tab to="tabs/second/second">Two</Tab>
+                </Tabs>
+              </TabPanel>
+              <TabPanel match="tabs/third/*">
+                <Tabs>
+                  <CustomTab to="tabs/third/first" defaultOf="./tabs/third">
+                    First custom tab
+                  </CustomTab>
+                  <CustomTab to="tabs/third/second">
+                    Second custom tab
+                  </CustomTab>
+                </Tabs>
+              </TabPanel>
             </div>
           </TabPage>
         </Prose>
       </main>
     </div>
   </>
+);
+
+const CustomTab: React.FC<TabProps> = ({ ...props }) => (
+  <Tab
+    getClassName={({ active, className }) =>
+      tw.classnames(
+        "inline-block",
+        "rounded-full",
+        "font-medium",
+        "no-underline",
+        "text-base",
+        "py-1",
+        "px-3",
+        ifElse(
+          active,
+          ["bg-blue-500", "text-white"],
+          ["text-gray-600", "hover:text-blue-500"]
+        ),
+        className
+      )
+    }
+    {...props}
+  />
 );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import { tw, switchcase, ifElse } from "@djgrant/react-tailwind";
 
 type IntrinsicProps = JSX.IntrinsicElements["input"];
@@ -36,12 +36,15 @@ const getInputStyles = ({ type }: InputProps) =>
     },
   });
 
-export const Input: React.FC<InputProps> = (props) => {
-  return (
-    <BaseInput
-      {...props}
-      type={props.type || "text"}
-      style={getInputStyles(props)}
-    />
-  );
-};
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ type, ...props }, ref) => {
+    return (
+      <BaseInput
+        {...props}
+        ref={ref}
+        type={type || "text"}
+        style={getInputStyles(props)}
+      />
+    );
+  }
+);

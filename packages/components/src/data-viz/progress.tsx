@@ -4,12 +4,17 @@ import { tw, switchcase } from "@djgrant/react-tailwind";
 type Size = "sm" | "lg";
 
 interface ProgressProps {
-  bars: Array<{ color: string; size?: Size; label: string; pc: number }>;
+  bars: Array<{
+    className: string;
+    size?: Size;
+    label: string;
+    pc: number;
+  }>;
   size: Size;
 }
 
 interface BarProps {
-  color: string;
+  className: string;
   size?: Size;
 }
 
@@ -27,11 +32,9 @@ const BarContainer = tw.div([
   "shadow-inner",
 ]);
 
-const Bar = tw.div<BarProps>(({ color, size }) => [
+const Bar = tw.div<BarProps>(({ size }) => [
   "px-2",
   "py-1",
-  `bg-${color}-400`,
-  color && size ? ["h-6"] : "h2",
   switchcase(size, {
     sm: "h-6",
     default: "h-8",
@@ -60,7 +63,7 @@ export const Progress: React.FC<ProgressProps> = ({ children, bars, size }) => {
       {bars.map((bar, i) => (
         <Bar
           key={i}
-          color={bar.color}
+          className={bar.className}
           size={size}
           style={{ width: `${bar.pc}%` }}
           title={bar.label}

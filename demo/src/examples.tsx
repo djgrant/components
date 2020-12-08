@@ -212,9 +212,9 @@ export const Examples: React.FC<RouteComponentProps> = () => (
             <Progress
               size="sm"
               bars={[
-                { pc: 20, label: "Failed", color: "red" },
-                { pc: 30, label: "Succeeded", color: "green" },
-                { pc: 12, label: "Pending", color: "blue" },
+                { pc: 20, label: "Failed", className: "bg-red-400" },
+                { pc: 30, label: "Succeeded", className: "bg-green-400" },
+                { pc: 12, label: "Pending", className: "bg-blue-400" },
               ]}
             >
               Processing tasks.... (62%)

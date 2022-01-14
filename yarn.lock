@@ -1143,6 +1143,13 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
+"@djgrant/components@^0.3.0":
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/@djgrant/components/-/components-0.3.5.tgz#183131f844597bab8473b48657e5818943b8b884"
+  integrity sha512-xAtVINOrgZMu1O9YTrrsz0CxhoEjuawly08z+1FqPwvwnDPFTDmGvohZ7Rlc1C2lzINwPrCNqHMzmmrwr1xcgw==
+  dependencies:
+    "@djgrant/react-tailwind" "^1.0.0"
+
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/@evocateur/libnpmaccess/-/libnpmaccess-3.1.2.tgz#ecf7f6ce6b004e9f942b098d92200be4a4b1c845"

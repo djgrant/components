@@ -1,5 +1,5 @@
 {
-  "version": "0.6.0",
+  "version": "0.6.1",
   "name": "@djgrant/components",
   "author": "Daniel Grant",
   "homepage": "https://components.danielgrant.co",
@@ -35,7 +35,7 @@
     "tailwindcss": ">=1.5"
   },
   "dependencies": {
-    "@djgrant/react-tailwind": "^1.2.0"
+    "@djgrant/react-tailwind": "^1.2.1"
   },
   "devDependencies": {
     "@types/reach__router": "^1.3.5",

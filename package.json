@@ -7,8 +7,7 @@
   },
   "workspaces": [
     "demo",
-    "packages/components",
-    "packages/react-tailwind"
+    "packages/components"
   ],
   "devDependencies": {
     "lerna": "^3.22.1"

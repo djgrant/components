@@ -2,7 +2,7 @@
   "private": true,
   "name": "components",
   "scripts": {
-    "build": "lerna run build & yarn workspace demo build",
+    "build": "lerna run build",
     "start": "lerna run start --parallel & yarn workspace demo start"
   },
   "workspaces": [

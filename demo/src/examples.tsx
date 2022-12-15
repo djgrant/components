@@ -42,6 +42,7 @@ export const Examples: React.FC<RouteComponentProps> = () => (
           </Tab>
           <H6 className="px-6 my-4">Navigation</H6>
           <Tab to="tabs">Tabs</Tab>
+          <Tab to="tree">Tree</Tab>
           <H6 className="px-6 my-4">Data Entry</H6>
           <Tab to="forms">Forms</Tab>
           <Tab to="buttons">Buttons</Tab>
@@ -254,6 +255,11 @@ export const Examples: React.FC<RouteComponentProps> = () => (
                 </Tabs>
               </TabPanel>
             </div>
+          </TabPage>
+
+          <TabPage match="tree">
+            <h1>Tree</h1>
+            <Tree />
           </TabPage>
         </Prose>
       </main>
